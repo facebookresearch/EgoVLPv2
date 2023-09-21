@@ -1,0 +1,80 @@
+{
+    "name": "CharadesEgo_32f",
+    "n_gpu": 8,
+    "arch": {
+        "type": "FrozenInTime",
+        "args": {
+            "video_params": {
+                "model": "SpaceTimeTransformer",
+                "arch_config": "base_patch16_224",
+                "num_frames": 32,
+                "pretrained": true,
+                "time_init": "zeros",
+		"drop_path_rate": 0.0
+            },
+            "text_params": {
+                "model": "roberta-base",
+                "pretrained": true,
+                "input": "text"
+            },
+            "projection": "minimal",
+            "load_checkpoint": "EgoVLPv2_smallproj_epoch1.pth"
+        }
+    },
+    "data_loader":
+            [
+                {
+                    "type": "MultiDistTextVideoDataLoader",
+                    "args":{
+                        "dataset_name": "CharadesEgo",
+                        "data_dir": "/cis/home/shraman/works_meta_2022/Datasets/CharadesEgo_v1_480",
+                        "meta_dir": "/cis/home/shraman/works_meta_2022/Datasets/CharadesEgo_v1_480/CharadesEgo",
+                        "reader": "cv2_charades",
+                        "shuffle": true,
+                        "num_workers": 4,
+                        "batch_size": 16,
+                        "split": "train",
+                        "text_params": {
+                            "input": "text"
+                        },
+                        "video_params": {
+                            "input_res": 224,
+                            "num_frames": 32,
+                            "loading": "lax"
+                        }
+                    }
+                }
+            ],
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 0.000015,
+	    "weight_decay": 0.01,
+	    "lr_mult_head": 1,
+	    "lr_mult_cross_modal": 1
+        }
+    },
+    "loss": {
+        "type": "NormSoftmaxLoss",
+        "args": {
+        }
+    },
+    "metrics": [
+        "charades_metrics_vtc"
+     ],
+    "trainer": {
+        "epochs": 20,
+        "max_samples_per_epoch": 500000,
+        "save_dir": "",
+        "save_period": 2,
+        "verbosity": 2,
+        "monitor": "min val_loss_0",
+        "early_stop": 10,
+        "init_val": false,
+        "neptune": false
+    },
+    "visualizer": {
+        "type": ""
+    }
+
+}

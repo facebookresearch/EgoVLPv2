@@ -11,7 +11,7 @@ ICCV, 2023
 
 ## 📢 News
 
-- [September, 2023] We release the first version of the EgoVLPv2 codebase.
+- [September, 2023] We release the EgoVLPv2 codebase.
 - [July, 2023] EgoVLPv2 is accepted in **ICCV 2023**.
 
 ## 📁 Repository Structure

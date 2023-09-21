@@ -1,0 +1,77 @@
+{
+    "name": "QFVS",
+    "n_gpu": 8,
+    "arch": {
+        "type": "FrozenInTime",
+        "args": {
+            "video_params": {
+                "model": "SpaceTimeTransformer",
+                "arch_config": "base_patch16_224",
+                "num_frames": 5,
+                "pretrained": true,
+                "time_init": "zeros"
+            },
+            "text_params": {
+                "model": "roberta-base",
+                "pretrained": true,
+                "input": "text"
+            },
+            "projection": "minimal",
+            "load_checkpoint" : "EgoVLPv2.pth"
+        }
+    },
+    "data_loader":
+            [
+                {
+                    "type": "MultiDistTextVideoDataLoader",
+                    "args":{
+                        "dataset_name": "EgoClip",
+                        "data_dir": "/cis/home/shraman/works_meta_2022/ego4d_chunked_multiprocessing",
+                        "meta_dir": "/cis/home/shraman/works_meta_2022/pre-training",
+                        "reader": "cv2_egoclip",
+                        "shuffle": true,
+                        "num_workers": 8,
+                        "batch_size": 32,
+                        "split": "train",
+                        "subsample": "mcq",
+                        "text_params": {
+                            "input": "text"
+                        },
+                        "video_params": {
+                            "input_res": 224,
+                            "num_frames": 5,
+                            "loading": "lax"
+                        },
+                        "neg_param": 60
+                    }
+                }
+            ],
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 3e-5
+        }
+    },
+    "loss": {
+        "type": "EgoNCE",
+        "args": {
+        }
+    },
+    "metrics": [
+        "egomcq_accuracy_metrics_vtc", "egomcq_accuracy_metrics_vtm"
+     ],
+    "trainer": {
+        "epochs": 10,
+        "max_samples_per_epoch": 500000,
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss_0",
+        "early_stop": 10,
+        "init_val": false,
+        "neptune": false
+    },
+    "visualizer": {
+        "type": ""
+    }
+
+}

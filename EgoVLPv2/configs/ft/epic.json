@@ -1,0 +1,81 @@
+{
+    "name": "EpicKitchens_MIR_4f",
+    "n_gpu": 8,
+    "arch": {
+        "type": "FrozenInTime",
+        "args": {
+            "video_params": {
+                "model": "SpaceTimeTransformer",
+                "arch_config": "base_patch16_224",
+                "num_frames": 16,
+                "pretrained": true,
+                "time_init": "zeros",
+		"drop_path_rate": 0.0
+            },
+            "text_params": {
+                "model": "roberta-base",
+                "pretrained": true,
+                "input": "text"
+            },
+            "projection": "minimal",
+            "load_checkpoint" : "EgoVLPv2_smallproj.pth"
+        }
+    },
+    "data_loader":
+            [
+                {
+                    "type": "MultiDistTextVideoDataLoader",
+                    "args":{
+                        "dataset_name": "EpicKitchens_MIR",
+                        "data_dir": "/cis/net/io94a/data/shraman/EK100/video_ht256px",
+                        "meta_dir": "/cis/net/io94a/data/shraman/EK100/epic-kitchens-100-annotations/retrieval_annotations",
+                        "reader": "cv2_epic",
+                        "shuffle": true,
+                        "num_workers": 2,
+                        "batch_size": 16,
+                        "split": "train",
+                        "text_params": {
+                            "input": "text"
+                        },
+                        "video_params": {
+                            "input_res": 224,
+                            "num_frames": 16,
+                            "loading": "lax"
+                        }
+                    }
+                }
+            ],
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 0.0002,
+	    "weight_decay": 0.01,
+	    "lr_mult_head": 1,
+	    "lr_mult_cross_modal": 1
+        }
+    },
+    "loss": {
+        "type": "AdaptiveMaxMarginRankingLoss",
+        "args": {
+            "margin":0.2
+        }
+    },
+    "metrics": [
+        "mir_metrics_vtc"
+     ],
+    "trainer": {
+        "epochs": 100,
+        "max_samples_per_epoch": 500000,
+        "save_dir": "",
+        "save_period": 2,
+        "verbosity": 2,
+        "monitor": "min val_loss_0",
+        "early_stop": 10,
+        "init_val": false,
+        "neptune": false
+    },
+    "visualizer": {
+        "type": ""
+    }
+
+}

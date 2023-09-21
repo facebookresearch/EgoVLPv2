@@ -1,0 +1,25 @@
+# Image setting
+input_image_embed_size: 768
+
+# Text Setting
+#tokenizer = "roberta-base"
+vocab_size: 50265
+mlm_prob: 0.15
+input_text_embed_size: 768
+
+# Transformer Setting
+hidden_size: 768
+num_heads: 12
+num_layers: 12
+mlp_ratio: 4
+drop_rate: 0.1
+num_fuse_block: 6
+
+
+# Gradient Checkpoint
+use_checkpoint: True
+
+# lr_scheduler
+decay_power: 1
+end_lr: 0.0000001
+warmup_steps: 0.1 # This is a floating point indicating % of max_steps

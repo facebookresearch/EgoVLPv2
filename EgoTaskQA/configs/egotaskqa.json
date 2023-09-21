@@ -1,0 +1,54 @@
+{
+    "name": "EgoTaskQA",
+    "n_gpu": 8,
+    "arch": {
+        "type": "FrozenInTime",
+        "args": {
+            "video_params": {
+                "model": "SpaceTimeTransformer",
+                "arch_config": "base_patch16_224",
+                "num_frames": 16,
+                "pretrained": true,
+                "time_init": "zeros"
+            },
+            "text_params": {
+                "model": "roberta-base",
+                "pretrained": true,
+                "input": "text"
+            },
+            "projection_dim": 4096,
+            "load_checkpoint" : ""
+        }
+    },
+    
+    
+    "optimizer": {
+        "type": "AdamW",
+        "args":{
+            "lr": 3e-5
+        }
+    },
+    "loss": {
+        "type": "NormSoftmaxLoss",
+        "args": {
+        }
+    },
+    "metrics": [
+        "t2v_metrics",
+        "v2t_metrics"
+     ],
+    "trainer": {
+        "epochs": 50,
+        "max_samples_per_epoch": 500000,
+        "save_dir": "/apdcephfs/private_qinghonglin/video_codebase/EgoVLP/results/NLQ",
+        "save_period": 2,
+        "verbosity": 2,
+        "monitor": "min val_loss_0",
+        "early_stop": 10,
+        "init_val": true,
+        "neptune": false
+    },
+    "visualizer": {
+        "type": ""
+    }
+}
