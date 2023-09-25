@@ -233,10 +233,6 @@ class Multi_Trainer_dist(Multi_BaseTrainer_dist):
                         if self.args.rank == _i:
                             data_text_all.append(data['text'])
 
-                    save_dict = {}
-                    if self.args.rank == 0:
-                        save_dict.update({'video': data['video'], 'text': data['text']})
-
 
                     if self.tokenizer is not None:
                         data['text'] = self.tokenizer(data['text'], return_tensors='pt', padding=True, truncation=True)
@@ -285,11 +281,6 @@ class Multi_Trainer_dist(Multi_BaseTrainer_dist):
                     pred_arr_vtm[dl_idx].append(data_pred_all_vtm.cpu())
                     type_arr[dl_idx].append(data_type_all.cpu())
 
-                    if self.args.rank == 0:
-                        save_dict.update({'pred': data_pred_all_vtc, 'gt': data_gt_all, 'type': data_type_all})
-
-                    torch.save(save_dict, "/cis/home/shraman/works_meta_2022/pre-training/EgoVLP_Fused_HardNegITM_Checkpoint_multinode_lrmodified_FIBER/egomcq_visualization/" + str(dl_idx) + "_" + str(batch_idx) + ".pt")
-                
 
             if self.writer is not None and self.args.rank == 0:
                 for dl_idx in range(len(self.valid_data_loader)):
