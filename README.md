@@ -11,7 +11,7 @@ ICCV, 2023
 
 ## 📢 News
 
-- [September, 2023] We release the EgoVLPv2 codebase.
+- [September, 2023] We release the EgoVLPv2 codebase, checkpoints and features.
 - [July, 2023] EgoVLPv2 is accepted in **ICCV 2023**.
 
 ## 📁 Repository Structure
@@ -35,6 +35,10 @@ EgoVLPv2
     └── EgoMQ
         └── Head-tuning on EgoMQ 
 ```
+
+Each directory contains data settings, training / inference scripts, and checkpoints.
+
+Notably, we provided pre-extracted video and text features to power NLQ & MQ, Ego4D challenges.
 
 ## 🛠️ Environment Preparation
 
