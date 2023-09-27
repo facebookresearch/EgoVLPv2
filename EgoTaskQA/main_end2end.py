@@ -362,7 +362,7 @@ def validate(model, val_dataloader, epoch, args, gpu, acc_calculator):
     acc_calculator.reset()
     
     print('validating...')
-    unique_dict = torch.load('/cis/home/shraman/works_meta_2022/pre-training/EgoVLP_Fused_HardNegITM_Checkpoint_multinode_lrmodified_FIBER/EgoTaskQA/EgoTaskQA/reasoning_unique_cat.pth')
+    unique_dict = torch.load('./reasoning_unique_cat.pth')
     with torch.no_grad():
         starttime = time.time()
         for idx, (video_frames, text_tokens, attention_masks, answers, reasoning_type_lst) in tqdm(enumerate(val_dataloader)):

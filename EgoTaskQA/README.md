@@ -7,6 +7,7 @@ wget https://www.cis.jhu.edu/~shraman/EgoVLPv2/datasets/EgoTaskQA/qa_videos.tgz
 wget https://www.cis.jhu.edu/~shraman/EgoVLPv2/datasets/EgoTaskQA/Data.tgz
 tar -xvzf qa_videos.tgz && rm qa_videos.tgz
 tar -xvzf Data.tgz && rm Data.tgz
+wget https://www.cis.jhu.edu/~shraman/EgoVLPv2/datasets/EgoTaskQA/reasoning_unique_cat.pth
 ```
 ## 📊 Fine-tuned Checkpoints and Results
 
