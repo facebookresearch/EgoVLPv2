@@ -26,10 +26,9 @@ from transformers import (
     get_cosine_schedule_with_warmup)
 
 from EgoTaskQA_dataset import EgoTaskQA, collate_func
-from baselines.utils.utils import ReasongingTypeAccCalculator
 from transforms import init_transform_dict, init_video_transform_dict
 import torch.distributed as dist
-from utils.util import state_dict_data_parallel_fix
+from utils.util import state_dict_data_parallel_fix, ReasongingTypeAccCalculator
 
 
 class AllGather_multi(torch.autograd.Function):
