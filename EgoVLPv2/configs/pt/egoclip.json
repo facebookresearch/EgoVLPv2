@@ -58,6 +58,8 @@
     "loss": {
         "type": "EgoNCE",
         "args": {
+		"verb": true,
+		"noun": true
         }
     },
     "metrics": [

@@ -41,10 +41,12 @@ class EgoNCE(nn.Module):
         mask_diag = torch.eye(x.shape[0]).cuda()
         if self.noun and self.verb:
             mask = mask_v * mask_n + mask_diag
-        elif self.noun:
+        elif self.noun and not self.verb:
             mask = mask_n + mask_diag
-        else:
+        elif self.verb and not self.noun:
             mask = mask_v + mask_diag
+        else:
+            mask = mask_diag
 
         "Assumes input x is similarity matrix of N x M \in [-1, 1], computed using the cosine similarity between normalised vectors"
         i_sm = F.softmax(x/self.temperature, dim=1)
