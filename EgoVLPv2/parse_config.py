@@ -36,7 +36,7 @@ class ConfigParser:
             self.resume = None
         else:
             self.resume = Path(args.resume)
-            resume_cfg_fname = self.resume.parent / 'config.json'
+            resume_cfg_fname = Path(args.config)
             if eval_mode == "epic":
                 resume_cfg_fname = Path('configs/eval/epic.json')
             if eval_mode == "charades":

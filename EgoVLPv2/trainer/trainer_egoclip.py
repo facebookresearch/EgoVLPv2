@@ -87,12 +87,6 @@ class Multi_Trainer_dist(Multi_BaseTrainer_dist):
             #     self.writer.log_scalar('{}'.format(metric.__name__), acc_metrics[i])
         return acc_metrics
 
-    def _adjust_learning_rate(self, optimizer, epoch, args):
-        lr = args.learning_rate1
-        for milestone in args.schedule:
-            lr *= 0.1 if epoch >= milestone else 1.
-        for param_group in optimizer.param_groups:
-            param_group['lr'] = lr
 
     def _train_epoch(self, epoch, scaler, gpu):
 
@@ -202,7 +196,6 @@ class Multi_Trainer_dist(Multi_BaseTrainer_dist):
             if self.args.rank == 0:
                 log.update(val_log)
 
-        self._adjust_learning_rate(self.optimizer, epoch, self.args)
 
         return log
 

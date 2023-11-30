@@ -423,6 +423,7 @@ class Multi_BaseTrainer_dist:
             'epoch': epoch,
             'state_dict': self.model.state_dict(),
             'optimizer': self.optimizer.state_dict(),
+            'scheduler': self.scheduler.state_dict(),
             'monitor_best': self.mnt_best,
             'config': self.config
         }
@@ -489,5 +490,6 @@ class Multi_BaseTrainer_dist:
                                 "Optimizer parameters not being resumed.")
         else:
             self.optimizer.load_state_dict(checkpoint['optimizer'])
+            self.scheduler.load_state_dict(checkpoint['scheduler'])
 
         self.logger.info("Checkpoint loaded. Resume training from epoch {}".format(self.start_epoch))
