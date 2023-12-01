@@ -114,7 +114,7 @@ $data_root/
 
 ### EgoMQ (feature extraction)
 
-For EgoMQ feature extraction, you need Ego4D resized but non-chunked videos, which will be the output of the first step of video pre-processing (see first bullet of preprocessing [here](/EgoVLPv2/README.md#egoclip--egomcq)). The videos will be structured as follows:
+For EgoMQ feature extraction, you need Ego4D resized but non-chunked videos, which will be the output of the first step of video pre-processing (see first bullet of preprocessing [here](#egoclip--egomcq)). The videos will be structured as follows:
 ```bash
 $data_root/
     Ego4D_256/
