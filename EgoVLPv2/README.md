@@ -114,7 +114,7 @@ $data_root/
 
 ### EgoMQ (feature extraction)
 
-For EgoMQ feature extraction, you need Ego4D resized but non-chunked videos, which will be the output of the first step of video pre-processing (see first bullet of preprocessing [here](#egoclip--egomcq)). The videos will be structured as follows:
+For EgoMQ feature extraction, you need Ego4D resized but non-chunked videos, which will be the output of the first step of video pre-processing (see first bullet of preprocessing [here](#egoclip--egomcq) also available in [fork](https://github.com/ShramanPramanick/EgoVLPv2/blob/main/EgoVLPv2/README.md#egoclip--egomcq)). The videos will be structured as follows:
 ```bash
 $data_root/
     Ego4D_256/
@@ -221,7 +221,7 @@ python test_mq.py --config configs/eval/mq.json --save_dir features_mq --split t
 python test_mq.py --config configs/eval/mq.json --save_dir features_mq --split val --cuda_base cuda:0 --device_ids 0,1,2,3,4,5,6,7
 # Note that the train, test and validation features should be under same root directory. 
 ```
-These pre-extracted features are used for EgoMQ head-tuning, which is shown [here](/EgoMQ#-fine-tuning-on-egomq). 
+These pre-extracted features are used for EgoMQ head-tuning, which is shown [here](/EgoMQ#-fine-tuning-on-egomq) also available in [fork](https://github.com/ShramanPramanick/EgoVLPv2/tree/main/EgoMQ#-fine-tuning-on-egomq). 
 
 ## 🙏 Acknowledgement
 The pre-training pipeline partially uses [EgoVLP](https://github.com/showlab/EgoVLP/tree/f3e8895c7a1a691bc7fb0c07618c3be0015887eb) and [FIBER](https://github.com/microsoft/FIBER) implementations. EK-100 dataloader partially uses [LAVILA](https://github.com/facebookresearch/LaViLa) codebase.
