@@ -1,5 +1,7 @@
 # EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/egovlpv2-egocentric-video-language-pre/question-answering-on-egotaskqa)](https://paperswithcode.com/sota/question-answering-on-egotaskqa?p=egovlpv2-egocentric-video-language-pre)
+
 [**EgoVLPv2: Egocentric Video-Language Pre-training with Fusion in the Backbone**](https://arxiv.org/abs/2307.05463)    
 [Shraman Pramanick](https://shramanpramanick.github.io/), [Yale Song](http://people.csail.mit.edu/yalesong/home/), [Sayan Nag](https://sayannag.github.io/), [Kevin Qinghong Lin](https://qinghonglin.github.io/), [Hardik Shah](https://www.linkedin.com/in/hardik-shah-75ab5429/), [Mike Z. Shou](https://sites.google.com/view/showlab), [Rama Chellappa](https://engineering.jhu.edu/faculty/rama-chellappa/), [Pengchuan Zhang](https://pzzhang.github.io/pzzhang/)                
 ICCV, 2023               
