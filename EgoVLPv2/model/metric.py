@@ -225,7 +225,7 @@ def v2t_metrics(sims, query_masks=None):
 def egomcq_accuracy_metrics_ensemble(preds, labels, types):
     metrics = {}
     type_list = torch.unique(types)
-    group_list = ["Intra-video", "Inter-video"]
+    group_list = ["Inter-video", "Intra-video"]
     for type_i, group_i in zip(type_list, group_list):
         correct = 0
         total = 0
@@ -243,7 +243,7 @@ def egomcq_accuracy_metrics_ensemble(preds, labels, types):
 def egomcq_accuracy_metrics_vtm(preds, labels, types):
     metrics = {}
     type_list = torch.unique(types)
-    group_list = ["Intra-video", "Inter-video"]
+    group_list = ["Inter-video", "Intra-video"]
     for type_i, group_i in zip(type_list, group_list):
         correct = 0
         total = 0
