@@ -13,7 +13,8 @@ ICCV, 2023
 
 ## 📢 News
 
-- [June, 2024] June, 2024 - EgoVLPv2 is awarded as an EgoVis (Egocentric Vision) 2022/2023 Distinguished Paper (<a href="https://egovis.github.io/awards/2022_2023/">news</a>).
+- [June, 2024] EgoVLPv2 is awarded as an EgoVis (Egocentric Vision) 2022/2023 Distinguished Paper (<a href="https://egovis.github.io/awards/2022_2023/">news</a>).
+- [November, 2023] EgoVLPv2 is a strong baseline in several tasks of <a href="https://arxiv.org/pdf/2311.18259">Ego-Exo4D</a>.
 - [September, 2023] We release the EgoVLPv2 codebase, checkpoints and features.
 - [July, 2023] EgoVLPv2 is accepted in **ICCV 2023**.
 
